@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class cube
+public class UIActions
 {
     
 }
