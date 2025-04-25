@@ -1,29 +1,25 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using System.Collections.Generic;
 
 public class ButtonManager : MonoBehaviour
 {
-    public GameObject buttonPrefab;
-    public Transform contentParent;
-
-    [System.Serializable]
-    public class BuildingButtonData
-    {
-        public string buildingName;
-        public int requiredXP;
-    }
-
-    public List<BuildingButtonData> buildings;
+    public Button[] stageButtons;
+    public BuildingManager buildingManager;
 
     void Start()
     {
-        foreach (var data in buildings)
+        for (int i = 0; i < stageButtons.Length; i++)
         {
-            GameObject buttonGO = Instantiate(buttonPrefab, contentParent);
-            var button = buttonGO.GetComponent<BuildingButton>();
-            button.SetData(data.buildingName, data.requiredXP);
+            int index = i; // Локальная копия для замыкания в лямбде
+            stageButtons[i].onClick.AddListener(() => OnStageButtonClicked(index));
         }
+    }
+
+    void OnStageButtonClicked(int index)
+    {
+        if (stageButtons[index].tag == "B5")
+            Debug.Log(buildingManager.buildings[index]);
+        Debug.Log(buildingManager.buildings[index].price);
+        buildingManager.ActivateBuilding(index);
     }
 }
