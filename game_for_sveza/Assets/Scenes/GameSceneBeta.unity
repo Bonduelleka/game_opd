@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bef6ed8b133b244f8986ada15dec574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  woodXPPerSecond: 1
+  woodXPPerSecond: 0
   isOpened: 0
   price: 0
   openedSprite: {fileID: 0}
@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bef6ed8b133b244f8986ada15dec574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  woodXPPerSecond: 1
+  woodXPPerSecond: 0
   isOpened: 0
   price: 0
   openedSprite: {fileID: 0}
@@ -674,7 +674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bef6ed8b133b244f8986ada15dec574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  woodXPPerSecond: 1
+  woodXPPerSecond: 0
   isOpened: 0
   price: 0
   openedSprite: {fileID: 1489759102397597292, guid: 81b49a23c26f0fd4690e477e9bace193, type: 3}
@@ -1661,7 +1661,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bef6ed8b133b244f8986ada15dec574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  woodXPPerSecond: 1
+  woodXPPerSecond: 0
   isOpened: 0
   price: 0
   openedSprite: {fileID: -656465378239615774, guid: 77d5bd41e7bede24cb49d6647b8b1874, type: 3}
@@ -1853,9 +1853,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bef6ed8b133b244f8986ada15dec574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  woodXPPerSecond: 1
+  woodXPPerSecond: 0
   isOpened: 0
-  price: 9
+  price: 78
   openedSprite: {fileID: 6467042104980852606, guid: a6af68b10cdf7214da9f0fd8cf1155df, type: 3}
   lockedSprite: {fileID: -1176274568439130604, guid: 63c49d2aea8ecb5408bc3bcbe007bd5a, type: 3}
 --- !u!212 &976727474
@@ -2336,7 +2336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bef6ed8b133b244f8986ada15dec574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  woodXPPerSecond: 1
+  woodXPPerSecond: 0
   isOpened: 0
   price: 0
   openedSprite: {fileID: -2138745050274974789, guid: 9f1e2b4ea6a50f1408944c5fba6836bd, type: 3}
@@ -2563,7 +2563,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bef6ed8b133b244f8986ada15dec574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  woodXPPerSecond: 1
+  woodXPPerSecond: 0
   isOpened: 0
   price: 0
   openedSprite: {fileID: -8410215660572439324, guid: 6335e57ee1bdf8743be90bad55b39815, type: 3}
@@ -3051,7 +3051,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   woodXP: 0
   woodXPText: {fileID: 0}
-  buildingManager: {fileID: 604150520}
+  buildingManager: {fileID: 0}
 --- !u!1 &1392880048
 GameObject:
   m_ObjectHideFlags: 0
@@ -3097,7 +3097,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bef6ed8b133b244f8986ada15dec574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  woodXPPerSecond: 1
+  woodXPPerSecond: 0
   isOpened: 0
   price: 0
   openedSprite: {fileID: -6630806149364223010, guid: c0b809464cbc5e1489af126774e562f8, type: 3}
@@ -3760,7 +3760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bef6ed8b133b244f8986ada15dec574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  woodXPPerSecond: 1
+  woodXPPerSecond: 0
   isOpened: 0
   price: 0
   openedSprite: {fileID: 3811181956543181886, guid: 56d9d58ec873b2c4fb74ef21073dcc70, type: 3}
