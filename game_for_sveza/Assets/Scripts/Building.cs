@@ -10,6 +10,7 @@ public class Building : MonoBehaviour
     public Sprite openedSprite;
     public Sprite lockedSprite;
     private SpriteRenderer spriteRenderer;
+    public GameManager gameManager;
 
     private void Start()
     {
@@ -21,6 +22,11 @@ public class Building : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        ChangeStatus();
+    }
+
     void GenerateXP()
     {
         if (isOpened)
@@ -28,11 +34,21 @@ public class Building : MonoBehaviour
             GameManager.Instance.AddWoodXP(woodXPPerSecond);
         }
     }
-    void UpdateVisual()
+    public void UpdateVisual()
     {
         if (spriteRenderer == null)
             spriteRenderer = GetComponent<SpriteRenderer>();
 
         spriteRenderer.sprite = isOpened ? openedSprite : lockedSprite;
+    }
+
+    private void ChangeStatus()
+    {
+        if (gameManager.GetComponent<GameManager>().woodXP >= price)
+        {
+            isOpened = true;
+            gameManager.GetComponent<GameManager>().woodXP -= price;
+            Debug.Log("STATUS HAS BEEN CHANCHED");
+        }
     }
 }
