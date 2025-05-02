@@ -1,25 +1,47 @@
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class ButtonManager : MonoBehaviour
 {
-    public Button[] stageButtons;
-    public BuildingManager buildingManager;
+    [SerializeField] private GameObject buildingManager;
+    [SerializeField] private GameObject buildingButtonPrefab;
+    [SerializeField] private Transform contentParent;
+
+
+    private GameObject[] buildings;
 
     void Start()
     {
-        for (int i = 0; i < stageButtons.Length; i++)
+        foreach (Transform child in contentParent)
         {
-            int index = i; // Локальная копия для замыкания в лямбде
-            stageButtons[i].onClick.AddListener(() => OnStageButtonClicked(index));
+            Destroy(child.gameObject);
+        }
+
+
+        buildings = buildingManager.GetComponent<BuildingManager>().buildingObjects;
+        foreach (GameObject obj in buildings)
+        {
+            GameObject newButton = Instantiate(buildingButtonPrefab, contentParent);
+            BuildingButton buildingButton = newButton.AddComponent<BuildingButton>();
+
+            Building building = obj.GetComponent<Building>();
+            //if (building.IsActive())
+            //{
+            //    newButton.SetActive(true);
+            //}
+            //else
+            //{
+            //    newButton.SetActive(false);
+            //}
+
+            //buildingButton.SetData(building, newButton);
         }
     }
 
     void OnStageButtonClicked(int index)
     {
-        if (stageButtons[index].tag == "B5")
-            Debug.Log(buildingManager.buildings[index]);
-        Debug.Log(buildingManager.buildings[index].price);
-        buildingManager.ActivateBuilding(index);
+        Debug.Log(index);
+        //buildingManager.ActivateBuilding(index);
     }
 }

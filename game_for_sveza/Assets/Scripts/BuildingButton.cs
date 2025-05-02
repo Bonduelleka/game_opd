@@ -4,13 +4,24 @@ using UnityEngine.UI;
 
 public class BuildingButton : MonoBehaviour
 {
-    public TextMeshProUGUI titleText;
-    public TextMeshProUGUI xpText;
-    public Button button;
+    private TextMeshProUGUI titleText;
+    private TextMeshProUGUI xpText;
+    private Button Button;
 
-    public void SetData(string title, int xpProgress)
+    public void SetData(Building building, Button button)
     {
-        titleText.text = title;
-        xpText.text = xpProgress.ToString();
+        Button = button;
+        //titleText.text = building.GetName();
+        //if (building.IsActive())
+        //{
+        //    xpText.text = "";
+        //}
+        //else
+        //{
+        //    if (building.EnoughXP())
+        //    {
+        //        button.
+        //    }
+        //}
     }
 }
