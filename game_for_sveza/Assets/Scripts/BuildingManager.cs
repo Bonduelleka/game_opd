@@ -4,10 +4,11 @@ public class BuildingManager : MonoBehaviour
 {
     public GameObject[] buildingObjects;
     public Building[] buildings;
+    private int countOfActiveBuildings;
 
-
-    private void Awake()
+    private void Start()
     {
+        countOfActiveBuildings = FindObjectOfType<DataSaver>().countOfActiveBuildings;
         buildings = new Building[buildingObjects.Length];
 
         for (int i = 0; i < buildingObjects.Length; i++)
@@ -18,30 +19,11 @@ public class BuildingManager : MonoBehaviour
             {
                 Debug.LogError($"На объекте {buildingObjects[i].name} нет компонента Building!");
             }
+            else if (i < countOfActiveBuildings)
+            {
+                buildings[i].ChangeStatus();
+            }
         }
         //Debug.Log(buildings[4].price);
-    }
-
-
-
-    public void ActivateBuilding(int index)
-    {
-        //if (index < 0 || index >= buildings.Length)
-        //{
-        //    Debug.LogWarning("Индекс вне диапазона: " + index);
-        //    return;
-        //}
-
-        // Включаем нужное здание
-        //buildings[index].SetActive(true);
-
-        // (Опционально) отключаем все остальные здания, если нужно
-        //for (int i = 0; i < buildings.Length; i++)
-        //{
-        //    if (i != index)
-        //        buildings[i].SetActive(false);
-        //}
-
-        Debug.Log($"Активировано здание: {index}");
     }
 }

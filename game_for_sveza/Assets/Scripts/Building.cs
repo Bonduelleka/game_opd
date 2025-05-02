@@ -3,10 +3,10 @@ using UnityEngine.UI;
 
 public class Building : MonoBehaviour
 {
-    public int woodXPPerSecond;
-    public bool isOpened = false;
+    private int woodXPPerSecond = 1;
+    public bool isOpened { get; private set; }
     public int price;
-
+    private DataSaver dataSaver;
     public Sprite openedSprite;
     public Sprite lockedSprite;
     private SpriteRenderer spriteRenderer;
@@ -16,25 +16,32 @@ public class Building : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         UpdateVisual();
+        if (price == 0)
+        { 
+            isOpened = true;
+            dataSaver.countOfActiveBuildings++;
+        }
         if (isOpened)
         {
             InvokeRepeating("GenerateXP", 1f, 1f);
         }
     }
 
-    private void Update()
+    private void Awake()
     {
-        ChangeStatus();
+        gameManager = gameManager.GetComponent<GameManager>();
+        dataSaver = FindObjectOfType<DataSaver>();
     }
 
-    void GenerateXP()
+
+    private void GenerateXP()
     {
         if (isOpened)
         {
             GameManager.Instance.AddWoodXP(woodXPPerSecond);
         }
     }
-    public void UpdateVisual()
+    private void UpdateVisual()
     {
         if (spriteRenderer == null)
             spriteRenderer = GetComponent<SpriteRenderer>();
@@ -42,13 +49,17 @@ public class Building : MonoBehaviour
         spriteRenderer.sprite = isOpened ? openedSprite : lockedSprite;
     }
 
-    private void ChangeStatus()
+    public bool ChangeStatus()
     {
-        if (gameManager.GetComponent<GameManager>().woodXP >= price)
+        if (gameManager.woodXP >= price)
         {
             isOpened = true;
-            gameManager.GetComponent<GameManager>().woodXP -= price;
-            Debug.Log("STATUS HAS BEEN CHANCHED");
+            gameManager.woodXP -= price;
+            dataSaver.woodXP = (gameManager.woodXP);
+            UpdateVisual();
+            dataSaver.countOfActiveBuildings++;
+            return true;
         }
+        return false;
     }
 }
