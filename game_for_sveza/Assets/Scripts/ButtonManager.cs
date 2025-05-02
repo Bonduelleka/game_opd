@@ -20,6 +20,6 @@ public class ButtonManager : MonoBehaviour
         if (stageButtons[index].tag == "B5")
             Debug.Log(buildingManager.buildings[index]);
         Debug.Log(buildingManager.buildings[index].price);
-        //buildingManager.ActivateBuilding(index); такого метода больше нет, есть ChangeStatus
+        //buildingManager.ActivateBuilding(index);
     }
 }
