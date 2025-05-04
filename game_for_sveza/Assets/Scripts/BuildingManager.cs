@@ -6,7 +6,7 @@ public class BuildingManager : MonoBehaviour
     public Building[] buildings;
     private int countOfActiveBuildings;
 
-    private void Start()
+    private void Awake()
     {
         countOfActiveBuildings = FindObjectOfType<DataSaver>().countOfActiveBuildings;
         buildings = new Building[buildingObjects.Length];
@@ -25,5 +25,10 @@ public class BuildingManager : MonoBehaviour
             }
         }
         //Debug.Log(buildings[4].price);
+    }
+
+    public Building[] GetBuildings()
+    {
+        return buildings;
     }
 }

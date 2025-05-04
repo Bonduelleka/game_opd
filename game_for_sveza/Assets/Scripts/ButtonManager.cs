@@ -1,25 +1,129 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ButtonManager : MonoBehaviour
 {
-    public Button[] stageButtons;
-    public BuildingManager buildingManager;
+    [SerializeField] private GameObject buildingManagerObject;
+    [SerializeField] private Transform contentParent;
+    [SerializeField] private GameObject dataSaverObject;
+    [SerializeField] private GameObject buttonPrefab;
+    protected DataSaver dataSaver;
+    protected BuildingManager buildingManager;
+    protected Building[] buildings;
+    protected Button[] buttons;
+    protected BuildingButton[] buildingButtons;
 
     void Start()
     {
-        for (int i = 0; i < stageButtons.Length; i++)
+        dataSaver = dataSaverObject.GetComponent<DataSaver>();
+        buildingManager = buildingManagerObject.GetComponent<BuildingManager>();
+        buildings = buildingManager.GetBuildings();
+
+        CreateButtons();
+
+        buttons = contentParent.GetComponentsInChildren<Button>();
+        buildingButtons = contentParent.GetComponentsInChildren<BuildingButton>();
+    }
+
+    void Update()
+    {
+        CheckButtons();
+    }
+
+
+
+    private void CreateButtons()
+    {
+        bool status = true;
+
+        for (int i = 0; i < buildings.Length; i++)
         {
-            int index = i; // Локальная копия для замыкания в лямбде
-            stageButtons[i].onClick.AddListener(() => OnStageButtonClicked(index));
+            Debug.Log($"Цена: {buildings[i].price}");
+
+            GameObject newButton = Instantiate(buttonPrefab, contentParent);
+
+            BuildingButton buildingBtn = newButton.GetComponent<BuildingButton>();
+            Button btnComponent = newButton.GetComponent<Button>();
+            Building building = buildingManager.buildings[i];
+            
+            // buildingBtn.titleText = "Имя"
+            if (status)
+            {
+                btnComponent.interactable = true;
+                if (building.isOpened)
+                {
+                    buildingBtn.xpText.text = "";
+                }
+                else
+                {
+                    buildingBtn.xpText.text = building.price.ToString();
+                    if (building.price <= dataSaver.woodXP)
+                    {
+                        buildingBtn.xpText.color = Color.green;
+                    }
+                    else
+                    {
+                        buildingBtn.xpText.color = Color.red;
+                    }
+                    status = false;
+                }
+            }
+            else
+            {
+                btnComponent.interactable = false;
+                buildingBtn.xpText.text = building.price.ToString();
+                buildingBtn.xpText.color = Color.red;
+            }
+            int buttonIndex = i;
+            btnComponent.onClick.AddListener(() => OnButtonClick(buttonIndex));
         }
     }
 
-    void OnStageButtonClicked(int index)
+    private void OnButtonClick(int buttonIndex)
     {
-        if (stageButtons[index].tag == "B5")
-            Debug.Log(buildingManager.buildings[index]);
-        Debug.Log(buildingManager.buildings[index].price);
-        //buildingManager.ActivateBuilding(index);
+        if (buildings[buttonIndex].isOpened)
+        {
+            // Запуск справки
+        }
+        else
+        {
+            buildings[buttonIndex].ChangeStatus();
+        }
+    }
+
+    private void CheckButtons()
+    {
+        Debug.Log(buildings.Length);
+
+        for (int i = 0; i < buildings.Length; i++)
+        {
+            Button btnComponent = buttons[i];
+
+            BuildingButton buildingBtn = buildingButtons[i];
+            Building building = buildingManager.buildings[i];
+
+            // buildingBtn.titleText = "Имя"
+            if (!(buildingBtn.xpText.text == ""))
+            {
+                if (building.isOpened)
+                {
+                    buildingBtn.xpText.text = "";
+                }
+                else
+                {
+                    btnComponent.interactable = true;
+                    if (building.price <= dataSaver.woodXP)
+                    {
+                        buildingBtn.xpText.color = Color.green;
+                    }
+                    else
+                    {
+                        buildingBtn.xpText.color = Color.red;
+                    }
+                    break;
+                }
+            }
+        }
     }
 }
