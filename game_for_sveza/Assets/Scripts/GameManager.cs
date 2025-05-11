@@ -33,7 +33,6 @@ public class GameManager : MonoBehaviour
 
     void UpdateUI()
     {
-        //woodXPText.text = "WoodXP: " + woodXP;
-        // ъ дндекюч ме рпнцюире
+        woodXPText.text = woodXP.ToString();
     }
 }
