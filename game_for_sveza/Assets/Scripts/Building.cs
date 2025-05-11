@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Building : MonoBehaviour
 {
+    [SerializeField] private string name;
     private int woodXPPerSecond = 1;
     public bool isOpened { get; private set; }
     public int price;
@@ -33,7 +35,10 @@ public class Building : MonoBehaviour
         dataSaver = FindObjectOfType<DataSaver>();
     }
 
-
+    public string GetName()
+    {
+        return name;
+    }
     private void GenerateXP()
     {
         if (isOpened)

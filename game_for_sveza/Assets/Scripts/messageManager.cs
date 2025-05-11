@@ -22,7 +22,6 @@ public class messageManager : MonoBehaviour
 
     public void makeMessage(int number)
     {
-        Debug.Log($"Отправлено ообщение с индексом: {number}");
         messageBox.SetActive(true);
         messageText.text = texts[number];
     }

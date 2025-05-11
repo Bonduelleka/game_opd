@@ -26,29 +26,23 @@ public class ButtonManager : MonoBehaviour
         buttons = contentParent.GetComponentsInChildren<Button>();
         buildingButtons = contentParent.GetComponentsInChildren<BuildingButton>();
     }
-
     void Update()
     {
         CheckButtons();
     }
-
-
-
     private void CreateButtons()
     {
         bool status = true;
 
         for (int i = 0; i < buildings.Length; i++)
         {
-            Debug.Log($"Цена: {buildings[i].price}");
-
             GameObject newButton = Instantiate(buttonPrefab, contentParent);
 
             BuildingButton buildingBtn = newButton.GetComponent<BuildingButton>();
             Button btnComponent = newButton.GetComponent<Button>();
             Building building = buildingManager.buildings[i];
-            
-            // buildingBtn.titleText = "Имя"
+
+            buildingBtn.titleText.text = building.GetName();
             if (status)
             {
                 btnComponent.interactable = true;
@@ -85,8 +79,6 @@ public class ButtonManager : MonoBehaviour
     {
         if (buildings[buttonIndex].isOpened)
         {
-            // Запуск справки
-            Debug.Log($"Сообщение с индексом: {buttonIndex} было вызвано");
             message.makeMessage(buttonIndex);
         }
         else
@@ -97,8 +89,6 @@ public class ButtonManager : MonoBehaviour
 
     private void CheckButtons()
     {
-        Debug.Log(buildings.Length);
-
         for (int i = 0; i < buildings.Length; i++)
         {
             Button btnComponent = buttons[i];

@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         dataSaver = FindObjectOfType<DataSaver>();
-        Debug.Log(dataSaver.woodXP);
         woodXP = dataSaver.woodXP;
         if (Instance == null) Instance = this;
     }
