@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System;
 using TMPro;
+using Unity.VisualScripting;
 
 public class messageManager : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class messageManager : MonoBehaviour
         woodXPText.enabled = false;
         messageBox.SetActive(true);
         messageText.text = texts[number];
+        SoundManager.PlaySound((SoundType)number,0.8f);
     }
 
     public void closeMessage()

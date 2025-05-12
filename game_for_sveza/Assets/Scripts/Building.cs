@@ -63,7 +63,13 @@ public class Building : MonoBehaviour
             dataSaver.woodXP = (gameManager.woodXP);
             UpdateVisual();
             dataSaver.countOfActiveBuildings++;
+
+            SoundManager.PlaySound(SoundType.PURCHASE);
             return true;
+        }
+        else
+        { 
+            SoundManager.PlaySound(SoundType.FAIL,1); 
         }
         return false;
     }
