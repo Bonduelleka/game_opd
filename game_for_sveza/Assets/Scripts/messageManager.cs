@@ -8,7 +8,7 @@ public class messageManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text messageText;
     [SerializeField] protected GameObject messageBox;
-    public TextMeshProUGUI woodXPText;
+    [SerializeField] GameObject woodXP;
 
     Dictionary<int, string> texts = new Dictionary<int, string>() {
         {0, "<b>Посадка и рубка деревьев</b>:\nЛесоводы cажают саженцы вручную (лопатой-мечом Колесова) или сажальной машиной (трактор с устройством для посадки). Лесорубы - срубают уже взрослые деревья, а после чего лесоводы сажают новые деревья."},
@@ -24,7 +24,7 @@ public class messageManager : MonoBehaviour
 
     public void makeMessage(int number)
     {
-        woodXPText.enabled = false;
+        woodXP.SetActive(false);
         messageBox.SetActive(true);
         messageText.text = texts[number];
         SoundManager.PlaySound((SoundType)number,0.8f);
@@ -33,7 +33,7 @@ public class messageManager : MonoBehaviour
     public void closeMessage()
     {
         messageBox.SetActive(false);
-        woodXPText.enabled = true;
+        woodXP.SetActive(true);
     }
 
 

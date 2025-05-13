@@ -41,7 +41,6 @@ public class ButtonManager : MonoBehaviour
             BuildingButton buildingBtn = newButton.GetComponent<BuildingButton>();
             Button btnComponent = newButton.GetComponent<Button>();
             Building building = buildingManager.buildings[i];
-
             buildingBtn.titleText.text = building.GetName();
             if (status)
             {
