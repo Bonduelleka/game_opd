@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class Building : MonoBehaviour
 {
     [SerializeField] private string name;
-    private int woodXPPerSecond = 1;
+    private int woodXPPerSecond = 5;
     public bool isOpened { get; private set; }
     public int price;
     private DataSaver dataSaver;
@@ -52,6 +52,12 @@ public class Building : MonoBehaviour
             spriteRenderer = GetComponent<SpriteRenderer>();
 
         spriteRenderer.sprite = isOpened ? openedSprite : lockedSprite;
+
+        if (TryGetComponent<Animator>(out var animator))
+        {
+            animator.enabled = isOpened;
+            animator.SetBool("isActive", isOpened);
+        }
     }
 
     public bool ChangeStatus()
