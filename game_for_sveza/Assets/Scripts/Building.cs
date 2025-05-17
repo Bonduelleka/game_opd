@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class Building : MonoBehaviour
 {
     [SerializeField] private string name;
-    private int woodXPPerSecond = 5;
+    private int woodXPPerSecond = 20;
     public bool isOpened { get; private set; }
     public int price;
     private DataSaver dataSaver;
