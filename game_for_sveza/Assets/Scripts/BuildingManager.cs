@@ -16,11 +16,11 @@ public class BuildingManager : MonoBehaviour
         for (int i = 0; i < buildingObjects.Length; i++)
         {
             buildings[i] = buildingObjects[i].GetComponent<Building>();
-
             if (i < countOfActiveBuildings)
             {
                 buildings[i].ChangeStatus(true);
             }
+            Debug.Log($"Здание {i + 1} активировано");
         }
         Debug.Log("BuildMan, COUNT OF LOADED BUILDINGS: " + buildings.Length);
         //Debug.Log(buildings[4].price);

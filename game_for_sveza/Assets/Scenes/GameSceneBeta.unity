@@ -167,6 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: "\u041F\u043E\u0441\u0430\u0434\u043A\u0430"
   price: 0
+  dataSaver: {fileID: 249330828}
   openedSprite: {fileID: 3276699001797390212, guid: da7c70970fe1f3e4b87694594fb4435e, type: 3}
   lockedSprite: {fileID: 3276699001797390212, guid: da7c70970fe1f3e4b87694594fb4435e, type: 3}
   gameManager: {fileID: 1367373112}
@@ -699,6 +700,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: "\u0425\u0430\u0440\u0432\u0435\u0441\u0442\u0435\u0440"
   price: 30
+  dataSaver: {fileID: 249330828}
   openedSprite: {fileID: 7014535469243476392, guid: f6d80b731c6a4c7498e734331d35d9b8, type: 3}
   lockedSprite: {fileID: -5423939228798083459, guid: 63b493b01f117344f88dafa5d43fcb31, type: 3}
   gameManager: {fileID: 1367373112}
@@ -1443,6 +1445,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: "\u041A\u043B\u0435\u0439"
   price: 210
+  dataSaver: {fileID: 249330828}
   openedSprite: {fileID: 1489759102397597292, guid: 81b49a23c26f0fd4690e477e9bace193, type: 3}
   lockedSprite: {fileID: -7303745027330998571, guid: 19f52799274d26e4fa3ead839a3bb687, type: 3}
   gameManager: {fileID: 1367373112}
@@ -2058,6 +2061,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: "\u0421\u0443\u0448\u043A\u0430"
   price: 180
+  dataSaver: {fileID: 249330828}
   openedSprite: {fileID: -3255344356637122733, guid: 22b6c72fbac73664eab8478973113105, type: 3}
   lockedSprite: {fileID: 8172377299707588097, guid: dcf526c109e33a149a018d03fd4e1b20, type: 3}
   gameManager: {fileID: 1367373112}
@@ -2435,6 +2439,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: "\u0420\u0430\u0441\u043F\u0438\u043B\u043A\u0430"
   price: 120
+  dataSaver: {fileID: 249330828}
   openedSprite: {fileID: 6467042104980852606, guid: a6af68b10cdf7214da9f0fd8cf1155df, type: 3}
   lockedSprite: {fileID: -1176274568439130604, guid: 63c49d2aea8ecb5408bc3bcbe007bd5a, type: 3}
   gameManager: {fileID: 1367373112}
@@ -2851,6 +2856,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: "\u041B\u0443\u0449\u0435\u043D\u0438\u0435"
   price: 150
+  dataSaver: {fileID: 249330828}
   openedSprite: {fileID: -2138745050274974789, guid: 9f1e2b4ea6a50f1408944c5fba6836bd, type: 3}
   lockedSprite: {fileID: -6924331630389574170, guid: 09eadfc5277cc6e4c8753fbb39a95625, type: 3}
   gameManager: {fileID: 1367373112}
@@ -3102,6 +3108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: "\u0411\u0430\u0441\u0441\u0435\u0439\u043D"
   price: 60
+  dataSaver: {fileID: 249330828}
   openedSprite: {fileID: -8410215660572439324, guid: 6335e57ee1bdf8743be90bad55b39815, type: 3}
   lockedSprite: {fileID: -8504779696036687459, guid: 2c800f3a54b99c14e96ee96872bc5cb2, type: 3}
   gameManager: {fileID: 1367373112}
@@ -3561,6 +3568,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: "\u041F\u0440\u0435\u0441\u0441"
   price: 240
+  dataSaver: {fileID: 249330828}
   openedSprite: {fileID: 591410640727118204, guid: b3a89ad764514bd4a9c5929def307c1e, type: 3}
   lockedSprite: {fileID: -7746862400825618281, guid: f9a007e44dc75e149bd99953af774c85, type: 3}
   gameManager: {fileID: 1367373112}
@@ -4287,6 +4295,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: "\u041E\u043A\u043E\u0440\u043A\u0430"
   price: 90
+  dataSaver: {fileID: 249330828}
   openedSprite: {fileID: 3811181956543181886, guid: 56d9d58ec873b2c4fb74ef21073dcc70, type: 3}
   lockedSprite: {fileID: -3851312784042902909, guid: 864d8f10b8faf3a4fa36dd512c12efdd, type: 3}
   gameManager: {fileID: 1367373112}

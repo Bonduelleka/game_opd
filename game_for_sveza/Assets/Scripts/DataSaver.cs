@@ -18,8 +18,22 @@ public class DataSaver : MonoBehaviour
         SaveData();
     }
 
+    void OnApplicationPause(bool pause)
+    {
+        if (pause)        // уходит в фон
+            SaveData();
+    }
+
+    void OnApplicationFocus(bool hasFocus)
+    {
+        if (!hasFocus)    // теряет фокус (например, пришёл звонок)
+            SaveData();
+    }
+
     void SaveData()
     {
+        if (countOfActiveBuildings > 9)
+            countOfActiveBuildings = 9;
         PlayerPrefs.SetInt("WoodXP", woodXP);
         PlayerPrefs.SetInt("Count", countOfActiveBuildings);
         PlayerPrefs.Save();
@@ -32,5 +46,6 @@ public class DataSaver : MonoBehaviour
         //Debug.Log("Сохры: " + woodXP);
         //woodXP = 0;
         //countOfActiveBuildings = 0;
+        Debug.Log("Кол-во зданий уже открытых: " + countOfActiveBuildings);
     }
 }

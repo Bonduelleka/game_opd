@@ -6,10 +6,11 @@ public class Building : MonoBehaviour
 {
     [SerializeField] private string name;
     //[SerializeField] private GameObject dataSaverObject;
-    private int woodXPPerSecond = 5;
+    private int woodXPPerSecond = 1;
+    private bool isNotCalledCourutine = true;
     public bool isOpened { get; private set; }
     public int price;
-    private DataSaver dataSaver;
+    public DataSaver dataSaver;
     public Sprite openedSprite;
     public Sprite lockedSprite;
     private SpriteRenderer spriteRenderer;
@@ -18,23 +19,24 @@ public class Building : MonoBehaviour
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        UpdateVisual();
-        if (price == 0)
-        { 
-            isOpened = true;
-            dataSaver.countOfActiveBuildings++;
-        }
-        if (isOpened)
+        if (price == 0 && !isOpened)
         {
-            InvokeRepeating("GenerateXP", 1f, 1f);
+            ChangeStatus();
         }
+        UpdateVisual();
+        //if (isOpened)
+        //{
+        //    woodXPPerSecond++;
+        //    InvokeRepeating("GenerateXP", 1f, 1f);
+        //}
+
     }
 
     private void Awake()
     {
         gameManager = gameManager.GetComponent<GameManager>();
         //dataSaver = dataSaverObject.GetComponent<DataSaver>();
-        dataSaver = FindObjectOfType<DataSaver>();
+        //dataSaver = FindObjectOfType<DataSaver>();
     }
 
     public string GetName()
@@ -50,6 +52,13 @@ public class Building : MonoBehaviour
     }
     private void UpdateVisual()
     {
+        if (isOpened && isNotCalledCourutine)
+        {
+            isNotCalledCourutine = false;
+            Debug.Log("Вызвана корутина!");
+            InvokeRepeating("GenerateXP", 1f, 1f);
+        }
+
         if (spriteRenderer == null)
             spriteRenderer = GetComponent<SpriteRenderer>();
 
@@ -67,7 +76,7 @@ public class Building : MonoBehaviour
         if (isLoaded)
         {
             isOpened = true;
-            dataSaver.countOfActiveBuildings++;
+            //dataSaver.countOfActiveBuildings++;
             UpdateVisual();
             return true;
         }
@@ -78,7 +87,7 @@ public class Building : MonoBehaviour
             dataSaver.woodXP = (gameManager.woodXP);
             UpdateVisual();
             dataSaver.countOfActiveBuildings++;
-
+            Debug.Log("COAB: " + dataSaver.countOfActiveBuildings);
             SoundManager.PlaySound(SoundType.PURCHASE);
             return true;
         }
