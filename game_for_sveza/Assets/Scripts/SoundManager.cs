@@ -26,15 +26,17 @@ public class SoundManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+
     }
 
     public static void PlaySound(SoundType sound, float volume = 0.5f)
     {
+        //Debug.Log("Sound manager is ACTIVE");
         instance.audioSource.PlayOneShot(instance.Sounds[(int)sound], volume);
     }
 }

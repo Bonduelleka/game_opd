@@ -9,21 +9,20 @@ public class BuildingManager : MonoBehaviour
     private void Awake()
     {
         countOfActiveBuildings = FindObjectOfType<DataSaver>().countOfActiveBuildings;
+        //Debug.Log("КОЛ-ВО ЗДАНИЙ: " + countOfActiveBuildings);
         buildings = new Building[buildingObjects.Length];
+        Debug.Log("BuildMan, COUNT OF BO: " + buildingObjects.Length);
 
         for (int i = 0; i < buildingObjects.Length; i++)
         {
             buildings[i] = buildingObjects[i].GetComponent<Building>();
 
-            if (buildings[i] == null)
+            if (i < countOfActiveBuildings)
             {
-                Debug.LogError($"На объекте {buildingObjects[i].name} нет компонента Building!");
-            }
-            else if (i < countOfActiveBuildings)
-            {
-                buildings[i].ChangeStatus();
+                buildings[i].ChangeStatus(true);
             }
         }
+        Debug.Log("BuildMan, COUNT OF LOADED BUILDINGS: " + buildings.Length);
         //Debug.Log(buildings[4].price);
     }
 

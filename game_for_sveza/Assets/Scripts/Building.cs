@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class Building : MonoBehaviour
 {
     [SerializeField] private string name;
-    private int woodXPPerSecond = 20;
+    private int woodXPPerSecond = 5;
     public bool isOpened { get; private set; }
     public int price;
     private DataSaver dataSaver;
@@ -21,7 +21,7 @@ public class Building : MonoBehaviour
         if (price == 0)
         { 
             isOpened = true;
-            dataSaver.countOfActiveBuildings++;
+            //dataSaver.countOfActiveBuildings++;
         }
         if (isOpened)
         {
@@ -60,9 +60,15 @@ public class Building : MonoBehaviour
         }
     }
 
-    public bool ChangeStatus()
+    public bool ChangeStatus(bool isLoaded = false)
     {
-        if (gameManager.woodXP >= price)
+        if (isLoaded)
+        {
+            isOpened = true;
+            UpdateVisual();
+            return true;
+        }
+        else if (gameManager.woodXP >= price)
         {
             isOpened = true;
             gameManager.woodXP -= price;
@@ -75,7 +81,7 @@ public class Building : MonoBehaviour
         }
         else
         { 
-            SoundManager.PlaySound(SoundType.FAIL,1); 
+            SoundManager.PlaySound(SoundType.FAIL, 1); 
         }
         return false;
     }

@@ -29,8 +29,8 @@ public class DataSaver : MonoBehaviour
     {
         woodXP = PlayerPrefs.GetInt("WoodXP", 0);
         countOfActiveBuildings = PlayerPrefs.GetInt("Count", 0);
-
-        woodXP = 0; // сапюрэ опх опнбепйе янупюмемхъ пегскэрюрнб
-        countOfActiveBuildings = 0; // сапюрэ опх опнбепйе янупюмемхъ пегскэрюрнб
+        //Debug.Log("яНУПШ: " + woodXP);
+        //woodXP = 0;
+        //countOfActiveBuildings = 0;
     }
 }

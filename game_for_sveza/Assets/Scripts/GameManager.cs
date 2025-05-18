@@ -12,14 +12,15 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        dataSaver = FindObjectOfType<DataSaver>();
-        woodXP = dataSaver.woodXP;
-        if (Instance == null) Instance = this;
+        
     }
 
     private void Start()
     {
-        Debug.Log("START XP: " + dataSaver.woodXP);
+        dataSaver = FindObjectOfType<DataSaver>();
+        woodXP = dataSaver.woodXP;
+        if (Instance == null) Instance = this;
+        //Debug.Log("START XP: " + dataSaver.woodXP);
         UpdateUI();
     }
 
@@ -27,7 +28,7 @@ public class GameManager : MonoBehaviour
     {
         woodXP += amount;
         UpdateUI();
-        Debug.Log("рейсыхи XP: " +  woodXP);
+        //Debug.Log("рейсыхи XP: " +  woodXP);
         dataSaver.woodXP = woodXP;
     }
 

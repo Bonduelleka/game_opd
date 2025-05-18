@@ -33,7 +33,7 @@ public class ButtonManager : MonoBehaviour
     private void CreateButtons()
     {
         bool status = true;
-
+        Debug.Log("CB BL: " + buildings.Length);
         for (int i = 0; i < buildings.Length; i++)
         {
             GameObject newButton = Instantiate(buttonPrefab, contentParent);
