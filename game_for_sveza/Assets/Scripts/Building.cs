@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class Building : MonoBehaviour
 {
     [SerializeField] private string name;
+    //[SerializeField] private GameObject dataSaverObject;
     private int woodXPPerSecond = 5;
     public bool isOpened { get; private set; }
     public int price;
@@ -21,7 +22,7 @@ public class Building : MonoBehaviour
         if (price == 0)
         { 
             isOpened = true;
-            //dataSaver.countOfActiveBuildings++;
+            dataSaver.countOfActiveBuildings++;
         }
         if (isOpened)
         {
@@ -32,6 +33,7 @@ public class Building : MonoBehaviour
     private void Awake()
     {
         gameManager = gameManager.GetComponent<GameManager>();
+        //dataSaver = dataSaverObject.GetComponent<DataSaver>();
         dataSaver = FindObjectOfType<DataSaver>();
     }
 
@@ -65,6 +67,7 @@ public class Building : MonoBehaviour
         if (isLoaded)
         {
             isOpened = true;
+            dataSaver.countOfActiveBuildings++;
             UpdateVisual();
             return true;
         }
