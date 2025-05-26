@@ -47,7 +47,8 @@ public class ButtonManager : MonoBehaviour
                 btnComponent.interactable = true;
                 if (building.isOpened)
                 {
-                    buildingBtn.xpText.text = "";
+                    buildingBtn.xpText.color = Color.black;
+                    buildingBtn.xpText.text = "Узнать";
                 }
                 else
                 {
@@ -100,7 +101,8 @@ public class ButtonManager : MonoBehaviour
             {
                 if (building.isOpened)
                 {
-                    buildingBtn.xpText.text = "";
+                    buildingBtn.xpText.color = Color.black;
+                    buildingBtn.xpText.text = "Узнать";
                 }
                 else
                 {
